@@ -41,7 +41,7 @@ def main(cfg):
         write_file(cfg['statefile'], ("%i" % (minutes)))
 
         # notify i3blocks if present
-        notify_process(cfg['notify_proc'], cfg['notify_sig'])
+        notify_process(cfg['notify_proc'], int(cfg['notify_sig']))
 
         # hibernate on low bat
         if minutes != -1:
