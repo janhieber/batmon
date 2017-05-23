@@ -1,0 +1,22 @@
+[Unit]
+Description=Batmon Daemon
+After=syslog.target
+
+[Service]
+Type=simple
+User=batmon
+Group=nobody
+# logging
+SyslogIdentifier=batmon
+StandardOutput=syslog
+StandardError=syslog
+# create /run folder
+PermissionsStartOnly=true
+ExecStartPre=-/usr/bin/mkdir /run/batmon
+ExecStartPre=/usr/bin/chown -R batmon:nobody /run/batmon
+ExecStart=/usr/bin/batmon.py
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
