@@ -3,7 +3,7 @@ BINDIR = /usr/bin
 install:
 	mkdir -p $(DESTDIR)$(BINDIR)
 	install -m 0755 batmon.py $(DESTDIR)$(BINDIR)/batmon.py
-	mkdir -p $(DESTDIR)/usr/share/polkit-1/rules.d/
+	install -Dm 0750 $(DESTDIR)/usr/share/polkit-1/rules.d/
 	install -m 0644 batmon.rules $(DESTDIR)/usr/share/polkit-1/rules.d/batmon.rules
 	mkdir -p $(DESTDIR)/etc/
 	test -f $(DESTDIR)/etc/batmon.conf \
