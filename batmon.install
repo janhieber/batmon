@@ -1,0 +1,10 @@
+post_install() {
+	if ! getent passwd batmon > /dev/null; then
+		useradd -c "Battery monitor daemon" --system -d /run/batmon -s /usr/bin/nologin -g nobody batmon
+		passwd -l batmon > /dev/null
+	fi
+}
+
+post_upgrade() {
+	post_install $1
+}
